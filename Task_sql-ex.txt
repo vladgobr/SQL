@@ -22,3 +22,36 @@ where type = 'Printer'
 Answer:
 Select model,ram,screen  from Laptop
 where price > 1000
+
+
+-------------------------------
+
+Задание: 4 (Serge I: 2002-09-21)
+Найдите все записи таблицы Printer для цветных принтеров.
+
+Answer:
+select * from Printer
+where color='y'
+
+-------------------------------
+
+Задание: 5 (Serge I: 2002-09-30)
+Найдите номер модели, скорость и размер жесткого диска ПК, имеющих 12x или 24x CD и цену менее 600 дол.
+
+Answer:
+select model, speed, hd from PC
+where cd in ('12x','24x')  and 
+price < 600
+
+-------------------------------
+
+Задание: 6 (Serge I: 2002-10-28)
+Для каждого производителя, выпускающего ПК-блокноты c объёмом жесткого диска не менее 10 Гбайт, найти скорости таких ПК-блокнотов. Вывод: производитель, скорость.
+
+Answer:
+Select distinct p.maker ,l.speed from laptop l
+left join product p
+on p.model = l.model
+where l.hd >= 10
+
+-------------------------------
