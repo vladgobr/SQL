@@ -108,3 +108,37 @@ from printer)
 
 Answer:
 Select avg(speed) from pc
+
+-------------------------------
+
+Задание: 12 (Serge I: 2002-11-02)
+Найдите среднюю скорость ПК-блокнотов, цена которых превышает 1000 дол.
+
+Answer:
+select avg(speed) from Laptop
+where price > 1000
+
+-------------------------------
+
+Задание: 13 (Serge I: 2002-11-02)
+Найдите среднюю скорость ПК, выпущенных производителем A.
+
+Answer:
+select avg(speed) from pc t1
+left join product t2
+on t1.model=t2.model
+where t2.maker='A'
+
+-------------------------------
+
+Задание: 14 (Serge I: 2002-11-05)
+Найдите класс, имя и страну для кораблей из таблицы Ships, имеющих не менее 10 орудий.
+
+Answer:
+Select t1.class, name, country from ships t1
+left join Classes t2
+on t1.class=t2.class
+where t2.numGuns >= 10
+
+-------------------------------
+
