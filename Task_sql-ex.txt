@@ -178,3 +178,14 @@ and
 t1.model=t2.model
 
 -------------------------------
+
+Задание: 18 (Serge I: 2003-02-03)
+Найдите производителей самых дешевых цветных принтеров. Вывести: maker, price
+
+Answer:
+select distinct t1.maker, t2.price from product t1, printer t2
+where t1.model=t2.model
+and t2.color='Y'
+and t2.price = (select min(price) from printer where color='Y')
+
+-------------------------------
