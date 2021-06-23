@@ -189,3 +189,47 @@ and t2.color='Y'
 and t2.price = (select min(price) from printer where color='Y')
 
 -------------------------------
+
+Задание: 19 (Serge I: 2003-02-13)
+Для каждого производителя, имеющего модели в таблице Laptop, найдите средний размер экрана выпускаемых им ПК-блокнотов.
+Вывести: maker, средний размер экрана.
+
+Answer:
+select distinct t1.maker, AVG(t2.screen) from product t1, laptop t2
+where t1.type='Laptop'
+and t1.model=t2.model
+GROUP BY t1.maker
+
+-------------------------------
+
+Задание: 20 (Serge I: 2003-02-13)
+Найдите производителей, выпускающих по меньшей мере три различных модели ПК. Вывести: Maker, число моделей ПК.
+
+Answer:
+select maker, COUNT(model) from product
+where type='PC'
+GROUP BY maker
+HAVING COUNT(model) >=3
+
+-------------------------------
+
+Задание: 21 (Serge I: 2003-02-13)
+Найдите максимальную цену ПК, выпускаемых каждым производителем, у которого есть модели в таблице PC.
+Вывести: maker, максимальная цена.
+
+Answer:
+Select distinct t1.maker, MAX(t2.price) from product t1, pc t2
+where t1.model=t2.model
+GROUP BY t1.maker
+
+-------------------------------
+
+Задание: 22 (Serge I: 2003-02-13)
+Для каждого значения скорости ПК, превышающего 600 МГц, определите среднюю цену ПК с такой же скоростью. Вывести: speed, средняя цена.
+
+Answer:
+select speed, avg(price) from PC
+where speed >600
+GROUP BY speed
+
+-------------------------------
